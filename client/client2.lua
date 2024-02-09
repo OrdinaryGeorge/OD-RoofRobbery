@@ -1,0 +1,62 @@
+-- QBCore = exports['qb-core']:GetCoreObject()
+-- local ped = PlayerPedId()
+-- local cid = nil
+-- local rep = nil
+-- local failed = nil
+
+-- RegisterNetEvent("QBCore:Client:OnPlayerLoaded", function()
+--     Wait(2000)
+-- end)
+-- --- For Third eye
+
+-- RegisterCommand("test", function(source, args, rawCommand)
+--     TriggerEvent('OD-Roof:OpenMenu')
+-- end, false)
+
+-- QBCore.Functions.GetPlayerData(function(playerData)
+--     if playerData and playerData.charinfo and playerData.charinfo.cid then
+--         cid = playerData.charinfo.cid -- Assign the CID value
+--         print(cid) -- You can print the CID to verify it
+--     end
+-- end)
+
+-- RegisterNetEvent("OD-Roof:OpenMenu", function ()
+--     print(rep)
+--     print(failed)
+--     QBCore.Functions.TriggerCallback('OD-Roof:GetRep', function(data)
+--         local myprint = ""
+--         for _, value in ipairs(data) do
+--             myprint = myprint .. tostring(value.rep)
+--             rep = myprint
+--         end
+--         TriggerEvent('OD-Roof:MainMenu', data)
+--     end)
+-- end)
+
+-- RegisterNetEvent("OD-Roof:MainMenu", function(data)
+--     Wait(1000)
+--     exports['qb-menu']:openMenu({
+--         {
+--             header = 'Roof Top Crobbas...',
+--             txt = 'Rep: '.. rep,
+--             icon = 'fas fa-code',
+--             isMenuHeader = true, -- Set to true to make a nonclickable title
+--         },
+--         {
+--             header = 'Mechanic Book',
+--             txt = 'Learn About How To Be A  Mechanic',
+--             icon = 'fas fa-code-merge',
+--             params = {
+--                 event = 'OD-Skills:Book:Mechainc',
+--             }
+--         },
+--         {
+--             header = 'Strat Book',
+--             txt = 'Learn Some Rat Strats',
+--             icon = 'fas fa-code-pull-request',
+--             params = {
+--                 event = 'OD-Skills:Book:Mechainc',
+--             }
+--         },
+--     })
+-- end)
