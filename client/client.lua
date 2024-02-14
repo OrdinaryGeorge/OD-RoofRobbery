@@ -5,8 +5,25 @@ local searching = false
 local JobLoc = {} 
 local randomloc = nil
 local CompnentsNeeded = nil
+local rep = 0
 local fails = 0
 AirconModels = {'prop_aircon_m_04', 'prop_aircon_m_06', 'prop_aircon_m_01', 'prop_aircon_m_02'}
+
+RegisterCommand("test", function(source, args, rawCommand)
+    JobFinish()
+end, false)
+
+RegisterNetEvent("OD-Roof:OpenMenu", function ()
+    print('^2 [DEBUG] ^7'..rep)
+    QBCore.Functions.TriggerCallback('OD-Roof:GetRep', function(data)
+        local myprint = ""
+        for _, value in ipairs(data) do
+            myprint = myprint .. tostring(value.rep)
+            rep = myprint
+        end
+        TriggerEvent('OD-Roof:MainMenu', data)
+    end)
+end)
 
 RegisterNetEvent("OD-Roof:MainMenu", function(data)
     Wait(5)
@@ -21,7 +38,7 @@ RegisterNetEvent("OD-Roof:MainMenu", function(data)
     exports['qb-menu']:openMenu({
         {
             header = 'Roof Top Crobbas...',
-            -- txt = 'Rep: '.. rep,
+            txt = 'Rep: '.. rep,
             icon = 'fas fa-code',
             isMenuHeader = true,
         },
@@ -165,6 +182,7 @@ function JobFinish()
     searching = false
     print('^2 [DEBUG] ^7 Jobs Done: ')
     print('^2 [DEBUG] ^7 Reset All Job!')
+    QBCore.Functions.TriggerCallback('OD-Roof:UpdateRep', function(data) end)
 end
 
 RegisterNetEvent('OD-Roof:QuitJob', function()
